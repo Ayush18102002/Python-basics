@@ -1,0 +1,18 @@
+OOPs ---
+. provides a clear structure to programs
+. Makes code easier to maintain, reuse and debug
+. helps keep your code DRY(don't repeat yourself)
+. Allows you to build reusable application with less code 
+
+Tip: The DRY principle means you should avoid writing the same code more than once. Move repeated code into functions or classes and reuse it.
+
+classes -- classes and objects are the two core concepts ini object-oriented programming
+
+a class defines what an object should look like and an object is creatted based on that class
+
+class                           objects
+fruit                         apple , banana , orange
+car                           volvo, audi, toyota
+
+When you create an object from a class, it inherits all the variables and functions defined inside that class.
+
