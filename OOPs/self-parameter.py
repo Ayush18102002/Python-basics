@@ -36,5 +36,32 @@ p3.PrintName()
 # use the words myobject and abc instead of self:
 
 
+# accessing properties with self
 
+class Car:
+    def __init__(self,brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+    
+    def display_info(self):
+        print(f"{self.brand} {self.model} {self.year}")
+    
+car1 = Car("Toyota", "Camry", 2022)
+car1.display_info()
 
+# calling Methods With self
+
+class person5:
+    def __init__(self, name):
+        self.name = name
+    
+    def greet(self):
+        return "hello, " + self.name
+    
+    def Welcome(self):
+        message = self.greet()
+        print(message + "! welcome to the party")
+
+p8 = person5("ayush")
+p8.Welcome()    

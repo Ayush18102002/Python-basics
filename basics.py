@@ -2465,4 +2465,18 @@ while y == True:
 print(" thank you!")
 
 """
+"""
 
+# set Isdisjoint -- it return true and false if no common element found
+
+set1 = {1,2,3}
+set2 = {4,5,6}
+set3 = {set1.isdisjoint(set2)}
+print(set3) # no common elemnt found so it is true
+
+set4 ={1,2,3}
+set5 ={3,4,5}
+set6 = {set4.isdisjoint(set5)}
+print(set6) # found common elemt it is false 
+
+"""
