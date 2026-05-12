@@ -102,3 +102,4 @@ class student(Person):
 
 x = student("ayush","kumar",2025)
 x.welcome()
+
