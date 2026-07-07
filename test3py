@@ -1,0 +1,242 @@
+# Section A
+
+
+#ans 1 : --
+
+import pandas as pd
+
+data = {
+    'Student_ID': [101,102,103,104,105],
+    'Name': ['Amit', 'Sara', 'john', 'priya', 'neha'],
+    'Age': [21,22,20,23,22],
+    'Score': [78,22,20,23,22]    
+    }
+
+df = pd.DataFrame(data)
+
+# display first 3 rows
+print(df.head(3))
+
+# display columns name
+print(df.columns)
+
+# check data types
+print(df.dtypes)
+
+#convert age columns to folat using astype()
+
+df['Age'] = df['Age'].astype('float64')
+print(df.dtypes['Age'])
+
+# Section B - merge and concat
+
+students = {
+    'Student_ID': [101,102,103,104],
+    'Name': ['Amit', 'Sara', 'john', 'priya'],   
+    }
+
+marks ={
+    'Student_ID': [101,102,103,104],
+    'marks': [78,85,92,88]    
+    }
+
+students = pd.DataFrame(students)
+marks = pd.DataFrame(marks)
+# Tasks :
+
+# perform inner merge 
+df_inner = pd.merge(students, marks, on='Student_ID', how='inner')
+print(df_inner)
+
+# perform left merge
+df_left = pd.merge(students, marks, on='Student_ID', how='left')
+print(df_left)
+
+# perform outer merge
+df_outer = pd.merge(students, marks, on='Student_ID', how='outer')
+print(df_outer)
+
+# concatenate two dataframes along vertically
+df_concat_rows = pd.concat([students, marks], axis=0)
+print(df_concat_rows)
+
+# concatenate two dataframes along horizantly
+df_concat_cols = pd.concat([students, marks], axis=1)   
+print(df_concat_cols)
+
+# explain the difference between merge and concat 
+# Merge is used to combine two dataframes based on a common column or index
+# Merge is more suitable for combining data based on specific keys 
+
+
+# concat is used to combine dataframes along a particular axis (either vertically(row) or horizontally(columns)) without considering any common columns. 
+# concat is useful for stacking dataframes together.
+
+# Section C - DUplicate Handling and data types
+
+Id = [1,2,2,3,4,4,5]
+Salary = [25000, 30000, 30000, 35000, 40000, 40000, 45000]
+
+Id= pd.DataFrame(Id, columns=['Id'])
+Salary = pd.DataFrame(Salary, columns=['Salary'])
+
+
+# Tasks:
+
+# identify duplicates row
+duplicates = Id.duplicated()
+print(duplicates)
+
+# count duplicates 
+duplicates_counts = Id.duplicated().sum()
+print(duplicates_counts)
+
+# remove duplicates
+remove_duplicates = Id.drop_duplicates()
+print(remove_duplicates)
+
+# convert salary column to int using astype()
+Salary['Salary'] = Salary['Salary'].astype('int64')
+print(Salary.dtypes['Salary'])
+
+
+# Section D - Missing values and imputation
+
+Age = [21,22,None,25,23,None,24]
+Salary2= [25000,None,28000,30000,None,27000,29000]
+Department = ['IT','HR','IT',None,'Sales','HR','IT']
+
+Age = pd.DataFrame(Age, columns=['Age'])
+Salary2 = pd.DataFrame(Salary2, columns=['Salary2'])
+Department = pd.DataFrame(Department, columns=['Department'])
+
+# Tasks:
+
+# check missing values
+print(Age.isnull())
+print(Salary2.isnull())
+print(Department.isnull())
+
+
+# apply mean imputation on Salary2 
+mean_salary2 = Salary2['Salary2'].mean()
+Salary2['Salary2'].fillna(mean_salary2, inplace=True)
+print(Salary2)
+
+# apply median imputation ton age
+median_age = Age['Age'].median()
+Age['Age'].fillna(median_age, inplace=True)
+print(Age)
+
+# apply mode imputation on department       
+mode_department = Department['Department'].mode()[0]
+Department['Department'].fillna(mode_department, inplace=True)
+print(Department)
+
+# compare the three technique in 2-3 lines
+# Mean imputation replaces missing values with the average of the available data
+# Median imputation replaces missing values with the middle value of the sorted data
+# Mode imputation replaces missing values with the most frequently occurring value
+
+
+# Section E - Outliers Detection and winsorization
+
+import numpy as np
+
+Salary3 = [25000, 27000, 28000, 29000, 30000, 31000, 32000, 35000, 45000, 120000]
+
+Salary3 = pd.DataFrame(Salary3, columns=['Salary3'])
+
+# Tasks:
+
+# create a box plot
+import matplotlib.pyplot as plt
+plt.boxplot(Salary3['Salary3'])
+plt.title('Box plot of Salary3')
+plt.show()
+
+# identify outliers 
+Q1 = Salary3['Salary3'].quantile(0.25)
+Q3 = Salary3['Salary3'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+outliers = Salary3[(Salary3['Salary3'] < lower_bound) | (Salary3['Salary3'] > upper_bound)]
+print(outliers)
+
+#Apply Winsorization (5th and 95th percentile).
+from scipy.stats.mstats import winsorize
+Salary3['Salary3'] = winsorize(Salary3['Salary3'], limits=[0.05, 0.05])
+print(Salary3)
+
+# Compare statistics before and after Winsorization.
+print("Statistics before Winsorization:")
+print(Salary3.describe())
+print("Statistics after Winsorization:")
+print(Salary3.describe())
+
+
+# Section F – Encoding & Discretization 
+
+Gender = ['Male','Female','Male','Female','Male']
+Education = ['UG','PG','UG','PhD','PG']
+Performance = ['Low','Medium','High','Medium','High']
+
+Gender = pd.DataFrame(Gender, columns=['Gender'])
+Education = pd.DataFrame(Education, columns=['Education'])
+Performance = pd.DataFrame(Performance, columns=['Performance'])
+
+
+# Tasks:
+
+# Apply Binary Discretization on: Score = [35,45,55,60,70,80] Create Pass/Fail based on threshold = 50.
+Score = [35,45,55,60,70,80]
+Score = pd.DataFrame(Score, columns=['Score'])
+Score['Score'] = pd.cut(Score['Score'], bins=2, labels=['Fail', 'Pass'])
+print(Score)
+
+# Apply One-Hot Encoding on Gender.
+Gender_encoded = pd.get_dummies(Gender, columns=['Gender'])
+print(Gender_encoded)
+
+# Apply Label Encoding on Education.
+from sklearn.preprocessing import LabelEncoder
+label_encoder = LabelEncoder()
+Education_encoded = label_encoder.fit_transform(Education)
+print(Education_encoded)
+
+# Apply Ordinal Encoding on Performance. Low < Medium < High.
+from sklearn.preprocessing import OrdinalEncoder
+ordinal_encoder = OrdinalEncoder(categories=[['Low', 'Medium', 'High']])
+Performance_encoded = ordinal_encoder.fit_transform(Performance)
+print(Performance_encoded)
+
+# Explain when Label Encoding should not be used.
+# Label Encoding should not be used when the categorical variable has a natural ordinal relationship, as it may introduce unintended ordinal relationships between the categories. For example, if we have a variable like "Education Level" with categories "High School", "Bachelor's", "Master's", and "PhD", using Label Encoding would assign arbitrary numerical values to these categories, which may lead to incorrect interpretations in machine learning models. In such cases, Ordinal Encoding or One-Hot Encoding would be more appropriate.
+
+
+#Section G – Visualization with Dtale 
+#Load any DataFrame with at least 20 rows.
+import dtale
+from sklearn.datasets import load_iris
+
+data = {
+    'Student_ID': [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120],
+    'Name': ['Amit', 'Sara', 'john', 'priya', 'neha', 'Ravi', 'Anita', 'Suresh', 'Pooja', 'Vikram', 'Kavita', 'Rahul', 'Sneha', 'Aakash', 'Nisha', 'Manish', 'Divya', 'Arjun', 'Meera', 'Sanjay'],
+    'Age': [21,22,20,23,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],
+    'Score': [78,22,20,23,22,85,92,88,90,95,80,82,87,91,89,93,94,96,97,98]    
+    }
+
+df = pd.DataFrame(data)
+d = dtale.show(df)
+print(d._main_url)  
+d.open_browser()
+
+
+
+
+
+
+
+
+

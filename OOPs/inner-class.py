@@ -59,3 +59,48 @@ class Outer_instance:
 outer2 = Outer_instance()
 inner2 = outer2.Inner2(outer2)
 inner2.display()
+
+
+# accessing outer class from inner class
+# inner classes in python do not automatically have access to the outer class instance
+# if you want the inner class to access the outer class, you need to pass the outer
+# class instance as a parameter
+
+"""
+class outer:
+    def __init__(self):
+        self.name = "emily"
+    
+    class inner:
+        def __init__(self,outer):
+            self.outer = outer
+
+        def display(self):
+            print(f" outer class name : {self.outer.name}")
+    
+Outer3 = outer()
+inner = outer.inner(outer)
+inner.display()
+
+
+"""
+
+# use an inner class to represent a car's engine
+
+class car:
+    def __init__(self,brand,model):
+        self.brand = brand
+        self.model = model
+        self.engine = self.engine()
+
+    class Engine:
+        def __init__(self):
+            self.status = "off"
+
+        def start(self):
+            self.status = "Running"
+            print("engine Started")
+
+        
+
+
