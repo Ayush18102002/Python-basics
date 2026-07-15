@@ -1,0 +1,60 @@
+# it is a importat part of any web application
+# python has several functions for creating, reading , updating, and deleting files
+
+# the main function is open() it takes two parameters filename and mode.
+
+# four different modes are available for opening a file
+# "r" - read mode which is used when the file is only being read
+# "w" - write mode which is used to edit and write on the file
+# "a" - append mode which is used to add new data to the end of the file; that is new information is automatically amended to the end
+# "r+" - read and write mode which is used to handle both actions when working with a file
+# "x" - create mode which is used to create a new file
+# "t" - text mode which is used to handle files in text format
+# "b" - binary mode which is used to handle non-text files (like images or executable files)
+
+# f = open("demofile.txt")
+
+
+f= open("demofile.txt", "rt")
+
+# because r for read and t for text are the default value
+# and make sure the file exists or else you will get an error
+
+print(f.read())
+
+# we can put the different file location in the open() function
+
+# use the with statement 
+# you can also use the with statement when opening a file
+
+with open("demofile.txt", "r") as f:
+    print(f.read())
+
+# in the wth statement you do not have to worry abput closing your files , the with statement take care of that
+
+
+# close file
+
+g = open("demofile.txt")
+print(g.readline()) # it read only the first line of the file
+g.close()
+
+# read only parts of the file
+
+# by default the read() method return whole text , but you can also specify how many characters you wants to return 
+
+with open("demofile.txt", "r") as s:
+    print(s.read(5)) # it will return the first 5 characters of the file    
+
+
+g = open("demofile.txt")
+print(g.readline()) # it read only the first line of the file
+print(g.readline()) # by calling the readline two times it print first two line from the files
+
+
+# by looping through the lines oof the file , you can read the whole file, line by line
+
+with open("demofile.txt") as f:
+    for x in f:
+        print(x) # it will print the whole file line by line
+
