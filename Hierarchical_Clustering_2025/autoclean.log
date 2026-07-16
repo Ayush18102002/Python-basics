@@ -1,0 +1,20 @@
+16-07-2026 21:14:25.40 - INFO - Started validation of input parameters...
+16-07-2026 21:14:25.40 - INFO - Completed validation of input parameters
+16-07-2026 21:14:25.40 - INFO - Started handling of duplicates... Method: "AUTO"
+16-07-2026 21:14:25.40 - DEBUG - 0 missing values found
+16-07-2026 21:14:25.40 - INFO - Completed handling of duplicates in 0.004561 seconds
+16-07-2026 21:14:25.40 - INFO - Started handling of missing values...
+16-07-2026 21:14:25.40 - INFO - Found a total of 3 missing value(s)
+16-07-2026 21:14:25.40 - INFO - Started handling of NUMERICAL missing values... Method: "AUTO"
+16-07-2026 21:14:25.51 - DEBUG - LINREG imputation of 1 value(s) succeeded for feature "SAT"
+16-07-2026 21:14:25.54 - DEBUG - LINREG imputation of 1 value(s) succeeded for feature "SFRatio"
+16-07-2026 21:14:25.56 - DEBUG - LINREG imputation of 1 value(s) succeeded for feature "GradRate"
+16-07-2026 21:14:25.57 - DEBUG - KNN imputation of 1 value(s) succeeded for feature "SAT"
+16-07-2026 21:14:25.57 - DEBUG - KNN imputation of 1 value(s) succeeded for feature "SFRatio"
+16-07-2026 21:14:25.58 - DEBUG - KNN imputation of 1 value(s) succeeded for feature "GradRate"
+16-07-2026 21:14:25.58 - INFO - Started handling of CATEGORICAL missing values... Method: "AUTO"
+16-07-2026 21:14:25.58 - INFO - Completed handling of missing values in 0.182163 seconds
+16-07-2026 21:14:25.59 - INFO - Started handling of outliers... Method: "WINZ"
+16-07-2026 21:14:25.59 - DEBUG - Outlier imputation of 4 value(s) succeeded for feature "SAT"
+16-07-2026 21:14:25.60 - DEBUG - Outlier imputation of 4 value(s) succeeded for feature "Top10"
+16-07-2026 21:14:25.60 - DEBUG - Outlier imputation of 1 value(s) succeeded for feature "Accept"
