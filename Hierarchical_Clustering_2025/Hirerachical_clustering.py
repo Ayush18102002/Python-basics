@@ -65,7 +65,7 @@ import pandas as pd  # Importing Pandas library for data manipulation
 import numpy as np   # Importing NumPy library for numerical computations
 import matplotlib.pyplot as plt  # Importing Matplotlib library for plotting
 
-import sweetviz  # Importing Sweetviz library for automated EDA (Exploratory Data Analysis)
+#import sweetviz  # Importing Sweetviz library for automated EDA (Exploratory Data Analysis)
 from AutoClean import AutoClean  # Importing AutoClean library for automated data cleaning
 print("AutoClean imported successfully!")
 
@@ -115,6 +115,9 @@ d = dtale.show(df, host = 'localhost', port = 8000)
 # Open the browser to view the interactive D-Tale dashboard
 d.open_browser()
 
+# Pause the script to allow time to interact with D-Tale. Press Enter in the console to continue.
+input("Press Enter to continue...")
+
 # Data Preprocessing
 
 # **Cleaning Unwanted columns**
@@ -140,10 +143,10 @@ print(df.iloc[:, 1:].dtypes)
 from AutoClean import AutoClean
 # Creating an instance of AutoClean class and defining a cleaning pipeline
 clean_pipeline = AutoClean(
-    df.iloc[:, 1:],        # Selecting all rows and columns except the first one ('UnivID') for cleaning
-    mode = 'auto',         # Setting the cleaning mode to 'manual'
+    df.iloc[:, 1:].astype(float, errors='ignore'),        # Selecting all rows and columns except the first one ('UnivID') for cleaning
+    mode = 'manual',         # Setting the cleaning mode to 'manual'
     missing_num = 'auto',    # Specifying automatic handling of missing numerical values
-    outliers = 'False',       # Specifying Winsorization method for outlier handling
+    outliers = 'winz',       # Disabling outlier handling
     encode_categ = 'auto'  # Specifying automatic encoding of categorical variables
 )
 
@@ -196,8 +199,8 @@ df_pipelined.describe()
 
 # Save Preprocessed data into SQL Mandatory
 
-user = 'user1'  # user name
-pw = 'user1'  # password
+user = 'root'  # user name
+pw = '*********'  # password
 db = 'univ_db' # database name
 engine = create_engine(f"mysql+pymysql://{user}:{pw}@localhost/{db}")
 df_pipelined.to_sql('processeddata', con = engine, if_exists = 'replace', chunksize = 1000, index = False)
@@ -420,8 +423,8 @@ import os
 os.getcwd()
 
 # Save final data into Database
-user = 'user1'  # user name
-pw = 'user1'  # password
+user = 'root'  # user name
+pw = '**********'  # password
 db = 'univ_db' # database name
 engine = create_engine(f"mysql+pymysql://{user}:{pw}@localhost/{db}")
 df_3clust.to_sql('final', con = engine, if_exists = 'replace', chunksize = 1000, index = False)
