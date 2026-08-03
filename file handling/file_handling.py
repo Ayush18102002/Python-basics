@@ -110,8 +110,8 @@ with open("myfile.txt","r") as f:
 # python delete file 
  # through the os.remove() you can delete a file 
 
- import os 
- os.remove("demofile.txt")
+import os 
+os.remove("demofile.txt")
 
 
 # check if file exists 
