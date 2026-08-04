@@ -87,19 +87,19 @@ print('number of dimesions : ', arr5.ndim)
 # you can acess an array elements by referring to its index number 
 # the indexing starts with 0
 
-
+"""
 import numpy as np
 
 arr = np.array([1,2,3,4,5,6,7,8,9])
 
 print(arr[0])
-
+"""
 # also we can perform negative indexing to access an array elements
-
+"""
 print(arr[-1]) # it will return the last element of the array
-
+"""
 # we can perform the addition , subtraction , multiplication and division of the array elements
-
+"""
 print(arr + 5) # it will add 5 to each element of the array
 print(arr - 2) # it will subtract 2 from each element of the array
 print(arr * 3) # it will multiply each element of the array by 3
@@ -108,20 +108,55 @@ print(arr / 2) # it will divide each element of the array by 2
 print(arr ** 2) # it will square each element of the array
 
 print(arr[2] + arr[3]) # it will add the 2nd and 3rd element of the array
-
+"""
 
 # acessing the 2-D array 
 
 # to access elements in a 2-D array, we use comma separated indices representing the dimension and the index of the element we want to access
+"""
 arr2d = np.array([[1,2,3],[4,5,6]])
 print(arr2d)
 print(arr2d[0,1]) # it will return the element at row 0, column 1 (which is 2)
-
+"""
 
 # 3-D array 
 # to acess elemets from 3-D arrays we can use comma seperated integers representing the dimensons and the index of the elements
-
+"""
 arr3d = np.array([[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]])
 print(arr3d)
 print(arr3d[0,1,2])
+"""
+
+# negative indexing in 2-D array
+"""
+import numpy as np
+
+arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+
+print('Last element from 2nd dim: ', arr[1, -1])
+
+"""
+# slicing arrays 
+# slicing in python means taking elements from one given index to another given index
+# we can slice numpy arrays using the colon : operator
+# we pass alice instead of index like this [start:end] . it will return the elements from start index to end index - 1
+# we acn also define the step like this [start:end:step] . it will return the elements from start index to end index - 1 , with the given step
+
+import numpy as np
+
+arr = np.array([1,2,3,4,5,6,7])
+print(arr[1:5])
+print(arr[4:])
+print(arr[:4])
+# negative slicing 
+print(arr[-3:-1])
+# using step in slicing
+print(arr[1:5:2])
+print(arr[::2])
+
+# slicing 2-D arrays    
+arr2d = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+print(arr2d[1, 1:4]) # it will return the elements from row 1, column 1 to column 3 (which is [7,8,9])
+print(arr2d[0:2, 2]) # it will return the elements from row 0 to row 1, column 2 (which is [3,8])
+print(arr2d[0:2, 1:4]) # it will return the elements from row 0 to row 1, column 1 to column 3
 
