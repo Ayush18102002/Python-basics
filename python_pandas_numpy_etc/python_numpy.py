@@ -170,7 +170,7 @@ print(arr2d[0:2, 1:4]) # it will return the elements from row 0 to row 1, column
 # complex data type in numpy is called complex_ or complexc . it is used to represent complex numbers. it can be used to represent both single-precision and double-precision complex numbers. the default size of a complex number is 16 bytes. we can specify the size of a complex number by using the dtype argument when creating an array. we can also use the numpy.complex64 and numpy.complex128 data types to represent 64-bit and 128-bit complex numbers respectively.
 
 
-
+"""
 import numpy as np
 arr = np.array([1,2,3,4])
 print(arr.dtype)
@@ -179,20 +179,20 @@ arr1 = np.array(['apple','banana','cherry'])
 
 print(arr1.dtype) # <class 'numpy.str_'>
 
-
+"""
 # creating array with difine data types
 # dtype also use to define the data type of the array when creating it. we can use the dtype argument to specify the data type of the array. we can also use the numpy.astype() method to change the data type of an existing array.
-
+"""
 arr2 = np.array([1,2,3,4], dtype = 'S') # S means string data type
 print(arr2)
 print(arr2.dtype)
-
+"""
 # for i,u,f,S and U we can define size as well
-
+"""
 arr3 = np.array([1,2,3,4], dtype = 'i4')
 print(arr3)
 print(arr3.dtype)
-
+"""
 # what if a values can not be converted - then numpy will raise valueerror
 
 # arr4 = np.array(['apple','banana','cherry'], dtype = 'i4') # it will raise valueerror because string can not be converted to integer
@@ -201,22 +201,23 @@ print(arr3.dtype)
 
 #converting data type on existing arrays 
 # the best way to change the data type of an existing array is to use the astype() method. it creates a new array and does not change the original array.
-
+"""
 arr5 = np.array([1.1,2.2,3.3,4.4])
 
 new_arr = arr5.astype('i') # it will convert the float data type to integer data type
 print(new_arr)
 print(new_arr.dtype)
-
+"""
 # we can pass int paramter instead of 'i'
-
+"""
 
 arr6 = np.array([1.1,2.1,3.1])
 
 new_arr1 = arr6.astype(int)
 print(new_arr1)
-print(new_arr.dtype)
+print(new_arr1.dtype)
 
 new_arr2 = arr6.astype(bool)
 print(new_arr2)
 print(new_arr2.dtype)
+"""
