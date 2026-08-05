@@ -142,6 +142,7 @@ print('Last element from 2nd dim: ', arr[1, -1])
 # we pass alice instead of index like this [start:end] . it will return the elements from start index to end index - 1
 # we acn also define the step like this [start:end:step] . it will return the elements from start index to end index - 1 , with the given step
 
+"""
 import numpy as np
 
 arr = np.array([1,2,3,4,5,6,7])
@@ -159,4 +160,63 @@ arr2d = np.array([[1,2,3,4,5], [6,7,8,9,10]])
 print(arr2d[1, 1:4]) # it will return the elements from row 1, column 1 to column 3 (which is [7,8,9])
 print(arr2d[0:2, 2]) # it will return the elements from row 0 to row 1, column 2 (which is [3,8])
 print(arr2d[0:2, 1:4]) # it will return the elements from row 0 to row 1, column 1 to column 3
+"""
 
+# numpy data types
+# string data type in numpy is called str_ or string_ . it is used to represent text data. it can be used to represent both fixed-length and variable-length strings. the default length of a string is 1 character. we can specify the length of a string by using the dtype argument when creating an array. we can also use the numpy.char module to perform various string operations on numpy arrays.
+# integer data type in numpy is called int_ or intc . it is used to represent integer data. it can be used to represent both signed and unsigned integers. the default size of an integer is 4 bytes. we can specify the size of an integer by using the dtype argument when creating an array. we can also use the numpy.int32 and numpy.int64 data types to represent 32-bit and 64-bit integers respectively.
+# floating point data type in numpy is called float_ or floatc . it is used to represent floating point data. it can be used to represent both single-precision and double-precision floating point numbers. the default size of a floating point number is 8 bytes. we can specify the size of a floating point number by using the dtype argument when creating an array. we can also use the numpy.float32 and numpy.float64 data types to represent 32-bit and 64-bit floating point numbers respectively.
+# boolean data type in numpy is called bool_ . it is used to represent boolean data. it can be used to represent both True and False values. the default size of a boolean value is 1 byte. we can specify the size of a boolean value by using the dtype argument when creating an array. we can also use the numpy.bool8 data type to represent 8-bit boolean values.
+# complex data type in numpy is called complex_ or complexc . it is used to represent complex numbers. it can be used to represent both single-precision and double-precision complex numbers. the default size of a complex number is 16 bytes. we can specify the size of a complex number by using the dtype argument when creating an array. we can also use the numpy.complex64 and numpy.complex128 data types to represent 64-bit and 128-bit complex numbers respectively.
+
+
+
+import numpy as np
+arr = np.array([1,2,3,4])
+print(arr.dtype)
+
+arr1 = np.array(['apple','banana','cherry'])
+
+print(arr1.dtype) # <class 'numpy.str_'>
+
+
+# creating array with difine data types
+# dtype also use to define the data type of the array when creating it. we can use the dtype argument to specify the data type of the array. we can also use the numpy.astype() method to change the data type of an existing array.
+
+arr2 = np.array([1,2,3,4], dtype = 'S') # S means string data type
+print(arr2)
+print(arr2.dtype)
+
+# for i,u,f,S and U we can define size as well
+
+arr3 = np.array([1,2,3,4], dtype = 'i4')
+print(arr3)
+print(arr3.dtype)
+
+# what if a values can not be converted - then numpy will raise valueerror
+
+# arr4 = np.array(['apple','banana','cherry'], dtype = 'i4') # it will raise valueerror because string can not be converted to integer
+# print(arr4)
+# print(arr4.dtype)
+
+#converting data type on existing arrays 
+# the best way to change the data type of an existing array is to use the astype() method. it creates a new array and does not change the original array.
+
+arr5 = np.array([1.1,2.2,3.3,4.4])
+
+new_arr = arr5.astype('i') # it will convert the float data type to integer data type
+print(new_arr)
+print(new_arr.dtype)
+
+# we can pass int paramter instead of 'i'
+
+
+arr6 = np.array([1.1,2.1,3.1])
+
+new_arr1 = arr6.astype(int)
+print(new_arr1)
+print(new_arr.dtype)
+
+new_arr2 = arr6.astype(bool)
+print(new_arr2)
+print(new_arr2.dtype)
