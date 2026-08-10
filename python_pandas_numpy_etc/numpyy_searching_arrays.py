@@ -37,3 +37,4 @@ x = np.searchsorted(arr4,[2,4,6])
 print(x)
 
 #The return value is an array: [1 2 3] containing the three indexes where 2, 4, 6 would be inserted in the original array to maintain the order.
+
