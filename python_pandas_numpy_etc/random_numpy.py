@@ -45,3 +45,16 @@ print(x5)
 x6 = random.choice([3,5,7,9], size = (18,5))
 print(x6)
 
+# random data distribution 
+# a random distribution is a set of random numbers that follow a certain probability density function
+# The probability is set by a number between 0 and 1, where 0 means that the value will never occur and 1 means that the value will always occur.
+
+x7 = random.choice([3,5,7,9],p=[0.1,0.3,0.6,0.0], size=(100))
+print(x7)
+
+# the sum of all probabilities should be 1
+
+# even if you run the example above 100 times the value 9 will neveer occur
+
+x8 = random.choice([3,5,7,9],p=[0.1,0.3,0.6,0.0], size=(3,5))
+print(x8)
