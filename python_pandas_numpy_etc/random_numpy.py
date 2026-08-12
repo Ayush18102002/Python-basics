@@ -58,3 +58,26 @@ print(x7)
 
 x8 = random.choice([3,5,7,9],p=[0.1,0.3,0.6,0.0], size=(3,5))
 print(x8)
+
+# random permutations 
+# A permutation refers to an arrangement of elements. e.g. [3,2,1] is a permutation of [1,2,3] and vice versa
+
+# the numpy random module provides two method for this shuffle() and permutation().
+
+
+# shuffling arrays 
+import numpy as np
+arr  = np.array([1,2,3,4,5])
+print("Before shuffle :",arr)
+random.shuffle(arr)
+print("after shuffle :",arr)
+
+
+# the shuffle() method makes changes to the original array
+# generate a random permutatio of elements of following arrays
+
+arr1 = np.array([1,2,3,4,5])
+print(random.permutation(arr1))
+
+# The permutation() method returns a re-arranged array (and leaves the original array un-changed).
+
