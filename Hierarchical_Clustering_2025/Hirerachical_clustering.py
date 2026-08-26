@@ -82,20 +82,20 @@ from urllib.parse import quote_plus
 from sqlalchemy import create_engine, text  # Importing create_engine and text from sqlalchemy for database interaction
 from urllib.parse import quote
 # Reading the dataset from an Excel file into a Pandas DataFrame
-uni = pd.read_excel(r"..\Hierarchical_Clustering_2025\University_Clustering.xlsx")
+uni = pd.read_csv(r"C:\Users\admin\OneDrive\Desktop\python-practice\Hierarchical_Clustering_2025\customer_segmentation_clustering_dataset.csv")
 
 # Credentials to connect to Database
 user = 'root'  # user name
-pw = quote("*********")  # password
-db = 'univ_db'  # database name
+pw = quote("Ayush.2002@#")  # password
+db = 'coustomer_segmentation'  # database name
 engine = create_engine(f"mysql+pymysql://{user}:{pw}@localhost/{db}")
 
 # to_sql() - function to push the dataframe onto a SQL table.
-uni.to_sql('univ_tbl', con = engine, if_exists = 'replace', chunksize = 1000, index = False)
+uni.to_sql('coustomer_tbl', con = engine, if_exists = 'replace', chunksize = 1000, index = False)
 
 
 ###### To read the data from MySQL Database
-sql = 'select * from univ_tbl;'
+sql = 'select * from coustomer_tbl;'
 df = pd.read_sql_query(text(sql), engine.connect())
 
 # Data types
@@ -125,7 +125,7 @@ input("Press Enter to continue...")
 # Analytically it does not have any value (Nominal data). 
 # We can safely ignore the UnivID column by dropping the column.
 
-df.drop(['UnivID'], axis = 1, inplace = True)  # Dropping the column 'UnivID' from the DataFrame 'df'
+df.drop(['Customer_ID'], axis = 1, inplace = True)  # Dropping the column 'UnivID' from the DataFrame 'df'
 df.info()  # Displaying concise summary of DataFrame 'df', including the number of non-null values and data types of each column
 
 # EDA report highlights:
@@ -163,7 +163,7 @@ df_clean = clean_pipeline.output
 df_clean.head()  
 
 # #### Drawback with this approach: If there are more than 10 categories, then Autoclean performs label encoding.
-
+"""
 df_clean.drop(['State'], axis = 1, inplace = True)  # Dropping the 'State' column from the cleaned DataFrame 'df_clean'
 df_clean.head()  # Displaying the first few rows of the updated cleaned DataFrame
 
@@ -430,3 +430,5 @@ engine = create_engine(f"mysql+pymysql://{user}:{pw}@localhost/{db}")
 df_3clust.to_sql('final', con = engine, if_exists = 'replace', chunksize = 1000, index = False)
 
 # End of Hierarchical Clustering
+
+"""
