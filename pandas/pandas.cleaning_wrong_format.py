@@ -17,3 +17,5 @@ import pandas as pd
 # the result from the converting in the example above gave us NaT value , which ccan be handled as a NULL value, and we can remove the row by usingthe dropna() method.
 
 # df.dropna(sunset=['Date'],inplace=True)
+
+
