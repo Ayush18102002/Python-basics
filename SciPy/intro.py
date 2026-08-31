@@ -13,3 +13,17 @@
 # SciPy is predominantly written in python, but a few segments are written in c.
 
 
+
+# Once SciPy is installed, import the SciPy module(s) you want to use in your applications by adding the from scipy import module statement:
+
+
+from scipy import constants
+
+
+# how many cubic meters are in one liter:
+print(constants.liter)
+
+# constants: SciPy offers a set of mathematical constants, one of them is liter which returns 1 liter as cubic meters.
+
+import scipy 
+print(scipy.__version__)
