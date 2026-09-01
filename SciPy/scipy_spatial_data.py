@@ -159,3 +159,4 @@ p8 = (False, True, True)
 res3 = hamming(p7, p8)
 
 print(res3)
+
